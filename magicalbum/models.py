@@ -1,3 +1,6 @@
 from django.db import models
+import jsonfield
 
-# Create your models here.
+
+class Album(models.Model):
+    pictures = jsonfield.JSONField()
