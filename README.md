@@ -15,7 +15,8 @@ Run the following command to install the app in your virtualenv
 
 In your Django `settings` module add the following to `INSTALLED_APPS`
 
-    'magicalbum'
+    'rest_framework',
+    'magicalbum',
 
 And the setting `MAGICALBUM_TASKS_BROKER` especifying the sending/receiving
     messages broker (Redis, RabbitMQ, etc). Make sure to install the properly
