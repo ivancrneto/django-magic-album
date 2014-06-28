@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="exway">
+  <head>
+    <meta charset = "utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Album | Album Pictures</title>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+    rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <a class="navbar-brand" href="#">Magic Album</a>
+    </nav> 
+
+    <div class="container-fluid">
+      {% if not album %}
+        <div class="alert alert-info">The magic album has not created yet.</div>
+      {% endif %}
+    </div>
+  </body>
+</html>

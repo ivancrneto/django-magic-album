@@ -11,3 +11,9 @@ class TestAlbumView(TestCase):
         """ Response status code for album view should be 200 """
         resp = self.client.get(r('magicalbum:album'))
         self.assertEqual(200, resp.status_code)
+
+    def test_no_album(self):
+        """ Message the user if there is no album """
+        resp = self.client.get(r('magicalbum:album'))
+        self.assertContains(resp,
+                            'The magic album has not created yet')
