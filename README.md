@@ -18,6 +18,8 @@ In your Django `settings` module add the following to `INSTALLED_APPS`
     'rest_framework',
     'magicalbum',
 
+We use Django Rest Framework for the album API.
+
 And the setting `MAGICALBUM_TASKS_BROKER` especifying the sending/receiving
     messages broker (Redis, RabbitMQ, etc). Make sure to install the properly
     broker packages. For example, for RabbitMQ:
