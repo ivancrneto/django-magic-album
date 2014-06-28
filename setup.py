@@ -17,5 +17,7 @@ setup(
         'celery',
         'django-jsonfield',
         'South',
+        'twython',
+        'djangorestframework',
     ]
 )
