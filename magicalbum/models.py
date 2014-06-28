@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models.signals import post_save
+from .utils import send_album_email
 import jsonfield
 
 
@@ -13,6 +15,8 @@ class Album(models.Model):
             self.pictures.append(picture)
 
         self.save()
+
+post_save.connect(send_album_email, sender=Album)
 
 
 class TweetsControl(models.Model):
