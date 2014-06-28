@@ -45,7 +45,7 @@ And the setting `MAGICALBUM_TASKS_BROKER` especifying the sending/receiving
     messages broker (Redis, RabbitMQ, etc). Make sure to install the properly
     broker packages. For example, for RabbitMQ:
 
-    MAGICALBUM_TASKS_BROKER = 'amqp://guest:**@localhost:5672/'
+    MAGICALBUM_TASKS_BROKER = 'amqp://guest@localhost:5672/'
 
 Add your Twitter API key and secret to the project settings:
 
