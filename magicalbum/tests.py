@@ -56,8 +56,17 @@ class TestAlbumAPI(TestCase):
         resp = self.client.get(r('magicalbum:api'))
         self.assertEqual(200, resp.status_code)
 
-    def test_no_album(self):
-        """ Return empty list if there is no album """
+    def test_no_album_or_no_picture(self):
+        """ Return empty list if there is no album or no picture """
+
+        # no album test
+        resp = self.client.get(r('magicalbum:api'))
+        resp = json.loads(resp.content)
+        self.assertEqual([], resp)
+
+        # no picture test
+        album = Album()
+        album.save()
         resp = self.client.get(r('magicalbum:api'))
         resp = json.loads(resp.content)
         self.assertEqual([], resp)
