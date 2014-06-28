@@ -3,7 +3,7 @@ from celery.utils.log import get_task_logger
 from django.conf import settings
 from twython import Twython
 from .models import Album, TweetsControl
-
+from django.utils.timezone import now as datetime_now
 
 logger = get_task_logger(__name__)
 
@@ -37,6 +37,7 @@ def update_album():
             album.add_picture({
                 'user': user,
                 'picture': picture,
+                'created_on': datetime_now().isoformat()
             })
             count += 1
 
