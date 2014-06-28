@@ -14,15 +14,22 @@
     </nav> 
 
     <div class="container-fluid">
-      {% if not album %}
-        <div class="alert alert-info">The magic album has not created yet.</div>
-      {% else %}
-        {% if not album.pictures|length %}
-
-          <div class="alert alert-info">The magic album has no pictures yet.</div>
+      <div class="col-lg-12">
+        {% if not album %}
+          <div class="alert alert-info">The magic album has not created yet.</div>
         {% else %}
+          {% if not album.pictures|length %}
+
+            <div class="alert alert-info">The magic album has no pictures yet.</div>
+          {% else %}
+            {% for picture in album.pictures %}
+              {% if forloop.first %}<div class="col-lg-12">{% endif %}
+              <img src="{{ picture.picture }}" class="img-thumbnail col-lg-3">
+              {% if not forloop.first and forloop.counter|divisibleby:4 %}</div>{% if not forloop.last %}<div class="col-lg-12">{% endif %}{% endif %}
+            {% endfor %}
+          {% endif %}
         {% endif %}
-      {% endif %}
+      </div>
     </div>
   </body>
 </html>

@@ -26,3 +26,22 @@ class TestAlbumView(TestCase):
         resp = self.client.get(r('magicalbum:album'))
         self.assertContains(resp,
                             'The magic album has no pictures yet.')
+
+    def test_pictures(self):
+        """ Number of pictures in page should match album pictures """
+        album = Album()
+        album.pictures = [
+            {
+                'user': 'ivan',
+                'picture': 'http://example.com/picture.jpg'
+            },
+            {
+                'user': 'ivan',
+                'picture': 'http://example.com/picture.jpg'
+            }
+        ]
+
+        album.save()
+        resp = self.client.get(r('magicalbum:album'))
+        self.assertEqual(album.pictures, resp.context['album'].pictures)
+        self.assertContains(resp, '<img', len(album.pictures))
