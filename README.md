@@ -29,3 +29,7 @@ Add your Twitter API key and secret to the project settings:
     TWITTER_SECRET = 'BJL7ujCUMmEIRF8wAI5tDjhZa6n2dV1FROjd4dZ1yc4'
 
 Run `python manage.py migrate magicalbum`.
+
+To see the album page, add the following to your urls setting:
+
+    url(r'^magicalbum/', include('magicalbum.urls', namespace='magicalbum')),
