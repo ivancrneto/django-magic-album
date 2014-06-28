@@ -20,7 +20,11 @@ def album(request):
 class AlbumAPI(APIView):
     """ Class with views for Album API """
 
-    def get(self, request, format=None):
+    def get(self, request):
         """ Method for retrieving expenses """
         resp = []
+        if Album.objects.count():
+            alb = Album.objects.get()
+            if len(alb.pictures):
+                resp = alb.pictures
         return Response(resp)

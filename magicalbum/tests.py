@@ -71,3 +71,21 @@ class TestAlbumAPI(TestCase):
         resp = json.loads(resp.content)
         self.assertEqual([], resp)
 
+    def test_pictures(self):
+        """ Pictures in json should match album pictures """
+        album = Album()
+        album.pictures = [
+            {
+                'user': 'ivan',
+                'picture': 'http://example.com/picture.jpg'
+            },
+            {
+                'user': 'ivan',
+                'picture': 'http://example.com/picture.jpg'
+            }
+        ]
+
+        album.save()
+        resp = self.client.get(r('magicalbum:api'))
+        resp = json.loads(resp.content)
+        self.assertEqual(resp, album.pictures)
