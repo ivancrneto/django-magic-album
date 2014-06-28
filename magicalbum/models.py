@@ -5,6 +5,15 @@ import jsonfield
 class Album(models.Model):
     pictures = jsonfield.JSONField()
 
+    def add_picture(self, picture):
+        if not self.pictures:
+            # by default jsonfeld returns an empty dict instead of list
+            self.pictures = [picture]
+        else:
+            self.pictures.append(picture)
+
+        self.save()
+
 
 class TweetsControl(models.Model):
     since_id = models.CharField(max_length=100)
