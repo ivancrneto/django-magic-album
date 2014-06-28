@@ -15,6 +15,7 @@ Run the following command to install the app in your virtualenv
 
 In your Django `settings` module add the following to `INSTALLED_APPS`
 
+    'south',
     'rest_framework',
     'magicalbum',
 
