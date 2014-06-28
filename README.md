@@ -36,7 +36,7 @@ Add the following to your project `__init__.py`:
     celery.conf.CELERYBEAT_SCHEDULE = {
         'poll-twitter-photos-every-twenty-minutes': {
             'task': 'magicalbum.tasks.update_album',
-            'schedule': crontab(minute=20),
+            'schedule': crontab(minute='*/20'),
         },
     }
 
