@@ -16,6 +16,12 @@
     <div class="container-fluid">
       {% if not album %}
         <div class="alert alert-info">The magic album has not created yet.</div>
+      {% else %}
+        {% if not album.pictures|length %}
+
+          <div class="alert alert-info">The magic album has no pictures yet.</div>
+        {% else %}
+        {% endif %}
       {% endif %}
     </div>
   </body>

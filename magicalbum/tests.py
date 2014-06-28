@@ -2,6 +2,7 @@
 
 from django.test import TestCase
 from django.core.urlresolvers import reverse as r
+from magicalbum.models import Album
 
 
 class TestAlbumView(TestCase):
@@ -17,3 +18,11 @@ class TestAlbumView(TestCase):
         resp = self.client.get(r('magicalbum:album'))
         self.assertContains(resp,
                             'The magic album has not created yet')
+
+    def test_no_picture(self):
+        """ Message the user if there is no picture in the album """
+        album = Album()
+        album.save()
+        resp = self.client.get(r('magicalbum:album'))
+        self.assertContains(resp,
+                            'The magic album has no pictures yet.')
