@@ -45,3 +45,12 @@ class TestAlbumView(TestCase):
         resp = self.client.get(r('magicalbum:album'))
         self.assertEqual(album.pictures, resp.context['album'].pictures)
         self.assertContains(resp, '<img', len(album.pictures))
+
+
+class TestAlbumAPI(TestCase):
+    """ Class for testing Magic Album API """
+
+    def test_status_code(self):
+        """ Response status code for album view should be 200 """
+        resp = self.client.get(r('magicalbum:api'))
+        self.assertEqual(200, resp.status_code)
