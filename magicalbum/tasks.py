@@ -1,15 +1,19 @@
+""" Module for executing magic album tasks """
+
 from celery import shared_task
 from celery.utils.log import get_task_logger
 from django.conf import settings
 from twython import Twython
 from .models import Album, TweetsControl
 from django.utils.timezone import now as datetime_now
+import random
 
 logger = get_task_logger(__name__)
 
 
 @shared_task
 def update_album():
+    """ Fetches Twitter for pictures and adds to album """
 
     if not Album.objects.count():
         Album.objects.create()
@@ -18,7 +22,6 @@ def update_album():
     album = Album.objects.get()
 
     twitter = Twython(settings.TWITTER_KEY, settings.TWITTER_SECRET)
-    # a = twitter.search(q='#carnival filter:images')
 
     since_id = TweetsControl.get_last_since_id()
     logger.info('Using {} value as since_id for twitter search...'.format(
@@ -37,7 +40,8 @@ def update_album():
             album.add_picture({
                 'user': user,
                 'picture': picture,
-                'created_on': datetime_now().isoformat()
+                'created_on': datetime_now().isoformat(),
+                'likes': random.randint(0, 100)
             })
             count += 1
 
