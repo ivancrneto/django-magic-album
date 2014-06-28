@@ -22,4 +22,5 @@ class AlbumAPI(APIView):
 
     def get(self, request, format=None):
         """ Method for retrieving expenses """
-        return Response({})
+        resp = []
+        return Response(resp)

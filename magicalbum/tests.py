@@ -3,6 +3,7 @@
 from django.test import TestCase
 from django.core.urlresolvers import reverse as r
 from magicalbum.models import Album
+import json
 
 
 class TestAlbumView(TestCase):
@@ -54,3 +55,10 @@ class TestAlbumAPI(TestCase):
         """ Response status code for album view should be 200 """
         resp = self.client.get(r('magicalbum:api'))
         self.assertEqual(200, resp.status_code)
+
+    def test_no_album(self):
+        """ Return empty list if there is no album """
+        resp = self.client.get(r('magicalbum:api'))
+        resp = json.loads(resp.content)
+        self.assertEqual([], resp)
+
