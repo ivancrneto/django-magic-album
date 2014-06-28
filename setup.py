@@ -9,8 +9,11 @@ setup(
     "Twitter, sends emails and posts to Facebook",
     long_description=open('README.md').read(),
     author="Ivan Neto",
-    author_email="espen@hogbakk.no",
+    author_email="ivan.cr.neto@gmail.com",
     url="http://github.com/ivancrneto/django-magic-album",
     packages=['magicalbum'],
     include_package_data=True,
+    install_requires=[
+        'celery',
+    ]
 )
