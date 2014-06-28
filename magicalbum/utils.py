@@ -12,8 +12,6 @@ def send_album_email(sender, instance, **kwargs):
         email_from = 'Eversnap Hashtag <Hashtag@EversnapApp.com>'
         email_to = ['ivan.cr.neto@gmail.com']
         bcc = ['davide@geteversnap.com']
-        # TODO: remove this bcc dev setting
-        bcc = ['ivan@becom.com.br']
         subject = '#carnival has {} photos'.format(num_pics)
         message = 'I\'m awesome!'
 
